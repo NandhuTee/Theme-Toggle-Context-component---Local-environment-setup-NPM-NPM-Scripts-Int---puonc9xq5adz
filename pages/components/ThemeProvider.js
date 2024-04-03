@@ -1,21 +1,22 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 
 const ThemeContext = React.createContext();
-
 const ThemeProvider = (props) => {
-  const [theme, setTheme] = useState('light');
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light'
-    setTheme(newTheme)
-  }
+  const [theme, setTheme] = React.useState('light');
+  const initialValue = {
+    theme,
+    toggleTheme: () => {
+      setTheme(theme === 'light' ? 'dark' : 'light');
+    },
+  };
   return (
-    <>
-      <ThemeContext.Provider value={{theme,toggleTheme}}>
+    <React.Fragment>
+      <ThemeContext.Provider value={initialValue}>
         {props.children}
       </ThemeContext.Provider>
-    </>
-  )
+    </React.Fragment>
+  );
 };
 
 export { ThemeProvider, ThemeContext };
