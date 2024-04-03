@@ -15,7 +15,7 @@ const Main = () => {
         id='global-theme-toggler'
         onClick={toggleTheme}
       >
-        Themed Button
+        Sup
       </button>
       <LocalThemedBox />
     </div>
